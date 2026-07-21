@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod/v4";
-import { User, Mail, Phone, Shield, Calendar, Bell, Trash2 } from "lucide-react";
+import { User, Mail, Phone, Calendar, Trash2 } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -27,11 +27,14 @@ const passwordSchema = z.object({
   confirmPassword: z.string(),
 }).refine((d) => d.newPassword === d.confirmPassword, { message: "Passwords don't match", path: ["confirmPassword"] });
 
+void profileSchema;
+void passwordSchema;
+
 type ProfileForm = z.infer<typeof profileSchema>;
 type PasswordForm = z.infer<typeof passwordSchema>;
 
 export default function ProfilePage() {
-  const { data: stats, isLoading } = useDashboardStats();
+  const { isLoading } = useDashboardStats();
   const [notifications, setNotifications] = useState({ email: true, tasks: true, referrals: false });
 
   const profileForm = useForm<ProfileForm>({ defaultValues: { name: "", email: "", phone: "", bio: "" } });

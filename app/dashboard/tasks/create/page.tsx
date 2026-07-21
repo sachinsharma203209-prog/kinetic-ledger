@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Modal } from "@/components/ui/Modal";
 import { formatCurrency } from "@/lib/utils";
-import type { TaskCategory, TaskDifficulty } from "@/types";
+import type { TaskDifficulty } from "@/types";
 
 const taskSchema = z.object({
   title: z.string().min(3, "Title must be at least 3 characters"),
@@ -118,7 +118,7 @@ export default function CreateTaskPage() {
   const { fields, append, remove } = useFieldArray({ control, name: "instructions" });
   const watched = watch();
 
-  const onSubmit = (_data: TaskFormValues) => {
+  const onSubmit = () => {
     setSubmitted(true);
     setTimeout(() => router.push("/dashboard"), 1500);
   };
@@ -139,7 +139,7 @@ export default function CreateTaskPage() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit(onSubmit as any)} className="space-y-6">
+        <form onSubmit={handleSubmit(() => onSubmit())} className="space-y-6">
           <Card>
             <CardHeader>
               <CardTitle>Basic Information</CardTitle>

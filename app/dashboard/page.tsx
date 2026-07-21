@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import {
   DollarSign,
@@ -8,8 +7,6 @@ import {
   Trophy,
   Clock,
   ArrowRight,
-  Upload,
-  TrendingUp,
 } from "lucide-react";
 import {
   AreaChart,

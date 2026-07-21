@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { Wallet, TrendingUp, Clock, Gift, ArrowDownLeft, ArrowUpRight, Copy, Check } from "lucide-react";
+import { Wallet, TrendingUp, Clock, Gift, ArrowDownLeft, ArrowUpRight } from "lucide-react";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { StatsCard } from "@/components/ui/StatsCard";

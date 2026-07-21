@@ -188,6 +188,7 @@ export default function TaskApprovalsPage() {
               </div>
               <div style={{ overflow: "hidden", borderRadius: "8px", border: "1px solid #E2E8F0" }}>
                 {proof.proofType === "screenshot" && proof.proofUrl && (
+                  // eslint-disable-next-line @next/next/no-img-element
                   <img src={proof.proofUrl} alt="Proof" style={{ maxHeight: "320px", width: "100%", objectFit: "contain" }} />
                 )}
                 {proof.proofType === "text" && (
