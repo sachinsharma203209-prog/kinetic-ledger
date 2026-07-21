@@ -55,10 +55,18 @@ jobs:
           name: out
           path: out
 
+      - name: Create Cloudflare Pages project (if not exists)
+        continue-on-error: true
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create kinetic-ledger --production-branch=master
+
       - name: Deploy to Cloudflare Pages
         id: deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create kinetic-ledger --production-branch=master || true && pages deploy out --project-name=kinetic-ledger --branch=production
+          command: pages deploy out --project-name=kinetic-ledger --branch=production
