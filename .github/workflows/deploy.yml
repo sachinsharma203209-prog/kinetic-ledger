@@ -61,4 +61,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy out --project-name=kinetic-ledger --branch=production
+          command: pages project create kinetic-ledger --production-branch=master || true && pages deploy out --project-name=kinetic-ledger --branch=production
